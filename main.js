@@ -35,8 +35,8 @@ app.ws('/echo', function(ws, req) {
 /*
  * Alustetaan palvelin
  */
-var server = app.listen(process.get('port'), function() {
-    var port = server.address().port;
+var server = app.listen(app.get('port'), function() {
+    var port = app.get('port');
     console.log('Palvelin kuuntelee portissa ' + port);
 });
 
