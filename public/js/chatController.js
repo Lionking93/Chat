@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 app.controller('chatController', function ($scope) {
-    var echoChannel = new WebSocket("ws://192.168.1.4:8081/echo");
+    var url = window.location.href.split("/")[2];
+    var echoChannel = new WebSocket("ws://" + url + "/echo");
     
     $scope.messageToServer = {
         sender: "",
