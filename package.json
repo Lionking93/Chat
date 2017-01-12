@@ -2,9 +2,15 @@
     "name": "Chat",
     "version": "1.0.0",
     "keywords": ["util", "functional", "server", "client", "browser"],
-    "author": "leokallo",
+    "author": "Leo Kallonen",
     "contributors": [],
-    "dependencies": {},
+    "engines": {
+        "node": "6.9.4"
+    },
+    "dependencies": {
+        "express": "4.14.0",
+        "express-ws": "2.0.0"
+    },
     "scripts": {
         "start": "node main.js"
     }

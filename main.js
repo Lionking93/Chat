@@ -14,6 +14,7 @@ var expressWs = require('express-ws')(app);
  */
 app.use(express.static('public'));
 
+app.set('port', (process.env.PORT || 8081));
 
 /*
  * Routing
@@ -34,7 +35,7 @@ app.ws('/echo', function(ws, req) {
 /*
  * Alustetaan palvelin
  */
-var server = app.listen(8081, "0.0.0.0", function() {
+var server = app.listen(process.get('port'), function() {
     var port = server.address().port;
     console.log('Palvelin kuuntelee portissa ' + port);
 });
