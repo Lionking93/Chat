@@ -7,6 +7,8 @@ and open the template in the editor.
 <html>
     <head>
         <title>NodeChat</title>
+        <link href="css/w3.css" rel="stylesheet"/>
+        <link href="css/main.css" rel="stylesheet"/>
         <script src="js/angular.min.js" type="text/javascript"></script>
         <script src="js/app.js" type="text/javascript"></script>
         <script src="js/messageService.js" type="text/javascript"></script>
@@ -15,14 +17,44 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body ng-app="chatApp">
-        <div ng-controller="chatController">
-            <label>Käyttäjänimi:</label><br>
-            <input ng-model="messageToServer.sender" type="text" /><br>
-            <label>Kirjoita viesti</label><br>
-            <input ng-model="messageToServer.content" type="text" /><br>
-            <button ng-click="sendMessage()">Send message</button>
-            <div ng-repeat="message in messagesToClient">
-                <p><strong>{{message.sender}}</strong>: {{message.content}}</p>
+        <div id="header" class="w3-container w3-center w3-green">
+            <h1>Leon chat</h1>
+        </div>
+        <div id="chatArea" ng-controller="chatController" class="w3-pale-green">
+            <div class="w3-row">
+                <div class="w3-col l3 m3 w3-pale-green">
+                    <ul class="w3-ul">
+                        <li class="w3-display-container w3-white w3-hover-light-gray w3-padding-16">
+                            <img class="w3-margin-right" src="images/kuvake.png" alt="avatar" />
+                            <span class="w3-display-middle">Pertsa</span>
+                        </li>
+                        <li class="w3-display-container w3-white w3-hover-light-gray w3-padding-16">
+                            <img class="w3-margin-right" src="images/kuvake.png" alt="avatar" />
+                            <span class="w3-display-middle">Jarmo</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w3-col l9 m9 w3-light-green">
+                    <!--
+                    <label>Käyttäjänimi:</label><br>
+                    <input ng-model="messageToServer.sender" type="text" /><br>-->
+                    <div class="w3-row" id="messageArea">
+                        <p id="{{message.date}}" ng-repeat="message in messagesToClient"
+                           class="w3-col l8 m8 s8 w3-margin w3-panel w3-padding-12 
+                           w3-border w3-white w3-round-medium w3-border-light-grey">
+                            <span class="w3-left"><strong>{{message.sender}}</strong>: {{message.content}}</span>
+                            <span class="w3-right">{{message.date}}</span>
+                        </p>
+                    </div>
+                    <div id="writeArea" class="w3-row">
+                        <input class="writeAreaComponent 
+                               w3-col l9 m9 s9 w3-input" placeholder="Kirjoita viesti tähän" 
+                               ng-model="messageToServer.content" type="text" />
+                        <button class="writeAreaComponent w3-col l3 m3 s3 w3-btn w3-blue
+                                w3-center" 
+                                ng-click="sendMessage()">Send</button>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
